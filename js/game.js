@@ -30,17 +30,17 @@ var levels = {
 
 function newNumbers(){
     if(dificultad == 'facil'){
-      n1 = intRandomNumber(1,2)
+      n1 = intRandomNumber(1,4)
       n2 = intRandomNumber(1,4)
     }else if(dificultad == 'medio'){
       n1 = intRandomNumber(1,4)
-      n2 = intRandomNumber(1,4)
+      n2 = intRandomNumber(1,9)
     }else if(dificultad == 'avanzado'){
-      n1 = intRandomNumber(1,4)
+      n1 = intRandomNumber(1,9)
       n2 = intRandomNumber(1,9)
     }else{
       n1 = intRandomNumber(1,9)
-      n2 = intRandomNumber(1,9)
+      n2 = intRandomNumber(10,99)
     }
 }
 
@@ -69,10 +69,10 @@ function reviewAns(){
 
 function reset(){
   newNumbers()
-
   $('#n1').text(n1)
   $('#n2').text(n2)
   $r_input.val('')
+  $r_input.focus()
 }
 
 function init(){
