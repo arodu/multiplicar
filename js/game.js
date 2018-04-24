@@ -44,5 +44,10 @@ function reset(){
   $('#n1').text(n1)
   $('#n2').text(n2)
   $('#resp').val('').focus()
+}
 
+function init(){
+  correctas = 0
+  incorrectas = 0
+  reset()
 }

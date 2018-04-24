@@ -67,6 +67,7 @@
       <h4 class="indigo-text text-darken-42 title">?</h4>
 
       <ul>
+        <li><strong>Nivel: <span id="dif_ans">?</span></strong></li>
         <li>Correctas: <span id="c_ans">?</span></li>
         <li>Incorrectas: <span id="i_ans">?</span></li>
       </ul>
@@ -107,6 +108,7 @@
           $modal.find('.modal-content .title').html('Respuesta incorrecta <i class="medium material-icons">sentiment_very_dissatisfied</i> ')
         }
 
+        $('#dif_ans').text(dificultad)
         $('#c_ans').text(correctas)
         $('#i_ans').text(incorrectas)
         $modal.modal('open')
@@ -114,10 +116,10 @@
 
       $('.cambiar-dificultad').on('click', function(){
         dificultad = $(this).data('dificultad')
-        reset()
+        init()
       })
 
-      reset()
+      init()
     })
   </script>
 
