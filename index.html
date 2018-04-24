@@ -94,6 +94,11 @@
 
       $("#respuesta").on('click', function(){
         resp = $('#resp').val()
+
+        if(resp == ''){
+          return false
+        }
+
         if(resp == (n1*n2)){
           correctas++
           $modal.find('.modal-content .title').html('Muy Bien!! <i class="medium material-icons">sentiment_very_satisfied</i> ')

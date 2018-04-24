@@ -43,6 +43,6 @@ function reset(){
 
   $('#n1').text(n1)
   $('#n2').text(n2)
-  $('#resp').val('')
-  
+  $('#resp').val('').focus()
+
 }
