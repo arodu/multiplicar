@@ -5,6 +5,9 @@ var resp
 var correctas = 0
 var incorrectas = 0
 
+var $modal = $('#modal-result')
+var $r_input = $('#resp')
+
 var corrects = [
   "Correcto!!",
   "Muy Bien, sigue intentado",
@@ -45,12 +48,31 @@ function intRandomNumber(init, end){
   return Math.floor((Math.random() * end) + init)
 }
 
+function reviewAns(){
+  resp = $r_input.val()
+  if(resp == ''){
+    return false
+  }
+  if(resp == (n1*n2)){
+    correctas++
+    $modal.find('.modal-content .title').html('Muy Bien!! <i class="medium material-icons right">sentiment_very_satisfied</i> ')
+  }else{
+    incorrectas++
+    $modal.find('.modal-content .title').html('Respuesta incorrecta <i class="medium material-icons right">sentiment_very_dissatisfied</i> ')
+  }
+
+  $('#dif_ans').text(levels[dificultad])
+  $('#c_ans').text(correctas)
+  $('#i_ans').text(incorrectas)
+  $modal.modal('open')
+}
+
 function reset(){
   newNumbers()
 
   $('#n1').text(n1)
   $('#n2').text(n2)
-  $('#resp').val('').focus()
+  $r_input.val('')
 }
 
 function init(){

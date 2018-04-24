@@ -38,7 +38,7 @@
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
+      <br />
       <div class="row">
          <h2 class="col s12 orange-text center">
             <span id="n1">?</span> x <span id="n2">?</span> =
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <br><br>
+      <br />
     </div>
   </div>
 
@@ -86,32 +86,25 @@
   <script type="text/javascript">
     $(function(){
       $(".dropdown-trigger").dropdown()
-      var $modal = $('#modal-result').modal({
+      $modal.modal({
         dismissible: true,
         onCloseStart: function(){
           reset()
+        },
+        onCloseEnd: function(){
+          $r_input.focus()
+        }
+      })
+
+      $(document).keypress(function(e){
+        if(e.which == 13  ) {
+          $modal.modal('close')
+          reviewAns()
         }
       })
 
       $("#respuesta").on('click', function(){
-        resp = $('#resp').val()
-
-        if(resp == ''){
-          return false
-        }
-
-        if(resp == (n1*n2)){
-          correctas++
-          $modal.find('.modal-content .title').html('Muy Bien!! <i class="medium material-icons right">sentiment_very_satisfied</i> ')
-        }else{
-          incorrectas++
-          $modal.find('.modal-content .title').html('Respuesta incorrecta <i class="medium material-icons right">sentiment_very_dissatisfied</i> ')
-        }
-
-        $('#dif_ans').text(levels[dificultad])
-        $('#c_ans').text(correctas)
-        $('#i_ans').text(incorrectas)
-        $modal.modal('open')
+        reviewAns()
       })
 
       $('.cambiar-dificultad').on('click', function(){
@@ -120,7 +113,14 @@
       })
 
       init()
+
+
     })
+
+
+    $( document ).ready(function() {
+      $r_input.focus()
+    });
   </script>
 
   </body>
