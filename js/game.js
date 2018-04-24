@@ -18,6 +18,13 @@ var fails = [
   "Sigue intentado",
 ]
 
+var levels = {
+  'facil': 'Fácil',
+  'medio': 'Medio',
+  'avanzado': 'Avanzado',
+  'dificil': 'Difícil',
+}
+
 function newNumbers(){
     if(dificultad == 'facil'){
       n1 = intRandomNumber(1,2)
