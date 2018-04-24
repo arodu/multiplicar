@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Juego para Multiplicar</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Multiplicar</a>
+
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">Dificultad<i class="material-icons right">arrow_drop_down</i></a>
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a class="cambiar-dificultad" data-dificultad="facil">Fácil</a></li>
+            <li><a class="cambiar-dificultad" data-dificultad="medio">Medio</a></li>
+            <li><a class="cambiar-dificultad" data-dificultad="avanzado">Avanzado</a></li>
+            <li><a class="cambiar-dificultad" data-dificultad="dificil">Dificil</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a class="cambiar-dificultad" data-dificultad="facil">Fácil</a></li>
+        <li><a class="cambiar-dificultad" data-dificultad="medio">Medio</a></li>
+        <li><a class="cambiar-dificultad" data-dificultad="avanzado">Avanzado</a></li>
+        <li><a class="cambiar-dificultad" data-dificultad="dificil">Dificil</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <div class="row">
+         <h2 class="col s12 orange-text center">
+            <span id="n1">?</span> x <span id="n2">?</span> =
+         </h2>
+      </div>
+      <div class="row">
+        <div class="col s8 offset-s2 center">
+          <input id="resp" type="number" class="orange-text" style="font-size: 3.5rem;"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 offset-s2 center">
+          <button id="respuesta" class="btn waves-effect waves-light" type="button">Respuesta
+            <i class="material-icons right">check</i>
+          </button>
+        </div>
+      </div>
+
+      <br><br>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal-result" class="modal">
+    <div class="modal-content">
+      <h4 class="indigo-text text-darken-42 title">?</h4>
+
+      <ul>
+        <li>Correctas: <span id="c_ans">?</span></li>
+        <li>Incorrectas: <span id="i_ans">?</span></li>
+      </ul>
+
+    </div>
+    <div class="modal-footer blue lighten-4">
+      <a id="sig" class="modal-action modal-close btn waves-effect waves-light">Siguiente <i class="material-icons right">forward</i></a>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/game.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $(".dropdown-trigger").dropdown()
+      var $modal = $('#modal-result').modal({
+        dismissible: true,
+        onCloseStart: function(){
+          reset()
+        }
+      })
+
+      $("#respuesta").on('click', function(){
+        resp = $('#resp').val()
+        if(resp == (n1*n2)){
+          correctas++
+          $modal.find('.modal-content .title').html('Muy Bien!! <i class="medium material-icons">sentiment_very_satisfied</i> ')
+        }else{
+          incorrectas++
+          $modal.find('.modal-content .title').html('Respuesta incorrecta <i class="medium material-icons">sentiment_very_dissatisfied</i> ')
+        }
+
+        $('#c_ans').text(correctas)
+        $('#i_ans').text(incorrectas)
+        $modal.modal('open')
+      })
+
+      $('.cambiar-dificultad').on('click', function(){
+        dificultad = $(this).data('dificultad')
+        reset()
+      })
+
+      reset()
+    })
+  </script>
+
+  </body>
+</html>
