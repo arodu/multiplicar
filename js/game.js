@@ -26,6 +26,7 @@ var levels = {
   'medio': 'Medio',
   'avanzado': 'Avanzado',
   'dificil': 'Difícil',
+  'extra': 'Extra',
 }
 
 function newNumbers(){
@@ -38,10 +39,13 @@ function newNumbers(){
     }else if(dificultad == 'avanzado'){
       n1 = intRandomNumber(1,9)
       n2 = intRandomNumber(1,9)
-    }else{
+    }else if(dificultad == 'dificil'){
       n1 = intRandomNumber(1,9)
       n2 = intRandomNumber(10,99)
-    }
+    }else{
+      n1 = intRandomNumber(10,99)
+      n2 = intRandomNumber(10,99)
+		}
 }
 
 function intRandomNumber(init, end){
